@@ -7,11 +7,12 @@ const gulp      = require('gulp'),
 			plumber   = require('gulp-plumber');
  
 gulp.task('pages', () => {
-  gulp.src('./src/pages/**/*.html')
+  gulp.src('./src/views/pages/**/*.html')
   	.pipe(plumber())
     .pipe(panini({
-    	root: './src/pages/',
-      layouts: './src/layout/'
+    	root: './src/views/pages/',
+      layouts: './src/views/layout/',
+      partials: './src/views/partials/'
     }))
     .pipe(gulp.dest('./dist'));
 }
