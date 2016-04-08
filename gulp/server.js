@@ -5,15 +5,17 @@
 const gulp            = require('gulp'),
       browserSync     = require('browser-sync').create();
 
+const watchFiles = [
+  './dist/*.html',
+  './dist/assets/css/*.css',
+  './dist/assets/js/*.js'
+];
+
 gulp.task('server', () => {
-  browserSync.init([
-  	'./dist/*.html',
-  	'./dist/assets/css/*.css',
-  	'./dist/assets/js/*.js'
-  	], {
+  return browserSync.init(watchFiles, {
       server: {
-      	baseDir: './dist'
-      }
+        baseDir: './dist'
+      },
+      reloadDelay: 500
   });
 });
-

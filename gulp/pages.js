@@ -3,17 +3,22 @@
 'use strict';
 
 const gulp      = require('gulp'),
-    	panini    = require('panini'),
-			plumber   = require('gulp-plumber');
+      panini    = require('panini'),
+      plumber   = require('gulp-plumber');
  
 gulp.task('pages', () => {
-  gulp.src('./src/views/pages/**/*.html')
-  	.pipe(plumber())
+  return gulp.src('./src/views/pages/**/*.{html,hbs,handlebars}')
+    .pipe(plumber())
     .pipe(panini({
-    	root: './src/views/pages/',
+      root: './src/views/pages/',
       layouts: './src/views/layout/',
       partials: './src/views/partials/'
     }))
     .pipe(gulp.dest('./dist'));
 }
 );
+
+gulp.task('pages:reset', () => {
+  panini.refresh();
+  gulp.run('pages');
+});

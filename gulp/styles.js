@@ -9,7 +9,7 @@ const gulp            = require('gulp'),
 			plumber         = require('gulp-plumber');
 
 gulp.task('styles', () => {
-	gulp.src('./src/assets/scss/*.scss')
+	return gulp.src('./src/assets/scss/*.scss')
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(sass({
