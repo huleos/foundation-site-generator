@@ -11,14 +11,15 @@ gulp.task('pages', () => {
     .pipe(plumber())
     .pipe(panini({
       root: './src/views/pages/',
-      layouts: './src/views/layout/',
+      layouts: './src/views/layouts/',
       partials: './src/views/partials/'
     }))
     .pipe(gulp.dest('./dist'));
 }
 );
 
-gulp.task('pages:reset', () => {
+gulp.task('pages:reset', (done) => {
   panini.refresh();
   gulp.run('pages');
+  done();
 });
