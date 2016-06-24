@@ -11,11 +11,10 @@ const watchFiles = [
   './dist/assets/js/*.js'
 ];
 
-gulp.task('server', () => {
-  return browserSync.init(watchFiles, {
-      server: {
-        baseDir: './dist'
-      },
+gulp.task('server', (done) => {
+  browserSync.init(watchFiles, {
+    server: './dist',
       reloadDelay: 500
   });
+  done();
 });

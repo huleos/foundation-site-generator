@@ -18,8 +18,7 @@ gulp.task('pages', () => {
 }
 );
 
-gulp.task('pages:reset', (done) => {
+gulp.task('resetPages', (done) => {
   panini.refresh();
-  gulp.run('pages');
   done();
 });
