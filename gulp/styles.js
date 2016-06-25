@@ -6,7 +6,10 @@ const gulp            = require('gulp'),
 			sass            = require('gulp-sass'),
 			prefix          = require('gulp-autoprefixer'),
 			sourcemaps      = require('gulp-sourcemaps'),
-			plumber         = require('gulp-plumber');
+			plumber         = require('gulp-plumber'),
+			gutil           = require('gulp-util');
+
+const PRODUCTION = gutil.env.production;
 
 gulp.task('styles', () => {
 	return gulp.src('./src/assets/scss/*.scss')
@@ -22,7 +25,9 @@ gulp.task('styles', () => {
 			browsers: ['last 2 versions'],
 			cascade: false
 		}))
-		.pipe(sass({outputStyle: 'compressed'}))
+		// .pipe(sass({outputStyle: 'compressed'}))
+		.pipe(PRODUCTION ? sass({outputStyle: 'compressed'}) : gutil.noop())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('./dist/assets/css'));
 });
+

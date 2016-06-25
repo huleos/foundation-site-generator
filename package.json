@@ -2,8 +2,10 @@
   "name": "foundation-site-generator",
   "version": "0.0.1",
   "description": "Static site generator with Gulp and Zurb Foundation",
+  "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "build": "gulp build --production"
   },
   "author": "Julio Cesar Montenegro",
   "license": "MIT",
@@ -18,6 +20,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.7",
     "panini": "^1.3.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.2.1"
